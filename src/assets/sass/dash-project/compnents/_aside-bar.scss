@@ -1,0 +1,60 @@
+.menu {
+  padding-inline: 1rem;
+  padding-block: 2rem;
+  font-size: 1rem;
+  color: white;
+
+  @media (min-width: 1499px) {
+    padding: 2rem;
+  }
+
+  &__main__link {
+    cursor: pointer;
+    padding: 0.5rem;
+    color: white;
+    text-decoration: none;
+
+    @media (min-width: 1200px) {
+      padding: 1rem;
+    }
+  }
+
+  &__main__sub-link {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 400ms ease-in-out;
+    list-style: none;
+
+    &__item:first-of-type {
+      margin-top: 1.16rem;
+    }
+    &__item {
+      margin-bottom: 1rem;
+      margin-inline-start: 3.5rem;
+      cursor: pointer;
+      color: #858585;
+      font-size: 15px;
+      font-weight: 600;
+      transition:
+        200ms ease-in-out background-color,
+        200ms ease-in-out color;
+    }
+  }
+
+  .menu-active {
+    background-color: white;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: #03045e !important;
+    display: inline-block;
+
+    ul {
+      max-height: 1000px;
+      transition: all 400ms ease-in-out;
+    }
+
+    i {
+      color: #03045e !important;
+    }
+  }
+}

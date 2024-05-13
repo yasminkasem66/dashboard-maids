@@ -1,0 +1,75 @@
+<nav aria-label="pagination" class="pagination">
+  <span class="pagination__label">
+    {{ 'Showing' }} {{ pageSize * currentPage - (pageSize - 1) }} {{ 'to' }}
+    {{ Math.min(pageSize * currentPage, totalCount) }} {{ 'of' }} {{ totalCount }} {{ 'entries' }}</span
+  >
+  <ul class="pagination__control">
+    <li>
+      <button
+        (click)="onFirst()"
+        [attr.aria-disabled]="currentPage === 1"
+        [attr.aria-label]="'Go To First Page'"
+        [disabled]="currentPage === 1"
+        class="pagination__control__item-btn"
+      >
+        <img
+          alt="{{ 'Go To First Page' }}"
+          height="10"
+          ngSrc="/assets/images/icons/double-chevron-left.svg"
+          width="12"
+        />
+      </button>
+    </li>
+    <li>
+      <button
+        (click)="onPrevious()"
+        [attr.aria-disabled]="currentPage === 1"
+        [attr.aria-label]="'Go To Previous Page'"
+        [disabled]="currentPage === 1"
+        class="pagination__control__item-btn"
+      >
+        <img alt="{{ 'Go To Previous Page' }}" height="24" ngSrc="/assets/images/icons/chevron-left.svg" width="24" />
+      </button>
+    </li>
+    <li *ngFor="let page of pages; trackBy: pagesIdentifier">
+      <a
+        (click)="onPageNumberClicked(page)"
+        (keyup.enter)="onPageNumberClicked(page)"
+        [attr.aria-current]="page === currentPage ? 'page' : null"
+        [attr.aria-label]="page === currentPage ? 'Current Page, Page ' + page : 'Go to Page ' + page"
+        [class.current]="page === currentPage"
+        class="inline-block pagination__control__item"
+        tabindex="0"
+      >
+        {{ page }}</a
+      >
+    </li>
+    <li>
+      <button
+        (click)="onNext()"
+        [attr.aria-disabled]="currentPage === totalPages"
+        [attr.aria-label]="'Go To Next Page'"
+        [disabled]="currentPage === totalPages"
+        class="pagination__control__item-btn"
+      >
+        <img alt="{{ 'Go To Next Page' }}" height="24" ngSrc="/assets/images/icons/chevron-right.svg" width="24" />
+      </button>
+    </li>
+    <li>
+      <button
+        (click)="onLast()"
+        [attr.aria-disabled]="currentPage === totalPages"
+        [attr.aria-label]="'Go To Last Page'"
+        [disabled]="currentPage === totalPages"
+        class="pagination__control__item-btn border-0 border-end border-gray-200"
+      >
+        <img
+          alt="{{ 'Go To Last Page' }}"
+          height="10"
+          ngSrc="/assets/images/icons/double-chevron-right.svg"
+          width="12"
+        />
+      </button>
+    </li>
+  </ul>
+</nav>

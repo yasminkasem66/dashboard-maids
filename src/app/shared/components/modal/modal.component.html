@@ -1,0 +1,42 @@
+<div class="modal flex justify-center items-center">
+  <div class="wrapper bg-light" [ngClass]="wrapperClasses">
+    <div class="wrapper__title p-4 flex justify-content-between items-center">
+      <h2 class="fw-bold">{{ title }}</h2>
+      <img
+        (click)="hideModal()"
+        class="wrapper__close-icon cursor-pointer"
+        ngSrc="assets/images/icons/times.svg"
+        height="24"
+        width="24"
+        alt=""
+      />
+    </div>
+    <hr />
+    <div class="w-100 wrapper__content">
+      <ng-content></ng-content>
+    </div>
+    <!-- buttons -->
+    <div class="flex wrapper__buttons">
+      <div class="ms-auto flex">
+        <button
+          type="button"
+          (click)="hideModal()"
+          class="btn border me-4"
+          *ngIf="closeBtnTitle"
+          [ngClass]="[isBtnLarge ? 'wrapper__buttons__lg' : '', closeBtnStyle]"
+        >
+          {{ closeBtnTitle }}
+        </button>
+        <button
+          type="submit"
+          (click)="submit()"
+          class="btn btn-primary"
+          *ngIf="submitBtnTitle"
+          [ngClass]="{ wrapper__buttons__lg: isBtnLarge, 'btn-danger': delete }"
+        >
+          {{ submitBtnTitle }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

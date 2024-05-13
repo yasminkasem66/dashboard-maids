@@ -1,0 +1,35 @@
+/*  default
+================================ */
+html {
+  font-size: 16px;
+}
+
+/* 1366px
+================================ */
+@media (max-width: 1366px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1290px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media (min-width: 1360px) and (max-width: 1499px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 1500px) and (max-width: 1550px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+body,
+html {
+  padding: 0 !important;
+}

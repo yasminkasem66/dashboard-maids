@@ -1,0 +1,17 @@
+<div
+  (focus)="inputUi.focus()"
+  [ngClass]="[isDisabled ? 'disabled' : '', appliedClasses]"
+  class="flex gap-2 justify-items-center bg-white rounded position-relative bg-danger search"
+  tabindex="-1"
+>
+  <input
+    #inputUi
+    (input)="onSearchValueChange($event)"
+    [(ngModel)]="searchValue"
+    [disabled]="isDisabled"
+    [ngClass]="[isDisabled ? 'disabled' : '', inputClasses]"
+    [placeholder]="placeholder || 'Search'"
+    class="outline-none w-full form-control"
+    type="search"
+  />
+</div>

@@ -1,0 +1,25 @@
+{
+  "GENERAL":{
+  "SEARCH":"Search"
+  },
+  "PAGINATION": {
+    "SHOWING": "Showing",
+    "TO": "to",
+    "OF": "of",
+    "ENTRIES": "entries",
+    "FIRST": "Go To First Page",
+    "PREVIOUS": "Go To Previous Page",
+    "NEXT": "Go To Next Page",
+    "LAST": "Go To Last Page"
+  },
+  "POST":{
+    "BODY":"Content",
+    "TITLE":"Title"
+  },
+  "ASIDE_BAR":{
+    "DASHBOARD":"DASHBOARD",
+    "POSTS":"POSTS",
+     "ALBUMS":"ALBUMS",
+     "LOG_OUT":"LOG OUT"
+  }
+}

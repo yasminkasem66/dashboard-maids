@@ -1,0 +1,40 @@
+.d-custom-grid {
+  height: calc(100% - 5.5rem);
+  width: 100%;
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.604), rgba(47, 47, 47, 0.604));
+  background-size: cover;
+  background-position-y: 20%;
+  display: grid;
+  margin: 0;
+  grid-template-columns: repeat(48, 1fr);
+  grid-template-rows: calc(100vh - 5.5rem);
+
+  .aside-bar {
+    display: inline-block;
+    grid-column: span 8;
+    margin: 1rem;
+    border-radius: 0.8rem;
+    grid-template-rows: calc(100vh - 5.5rem);
+    height: auto;
+  }
+
+  .content {
+    background-color: #fff;
+    border-radius: 0.8rem;
+    margin: 1rem 0;
+    grid-column: span 39;
+    padding: 1.3rem;
+    grid-template-rows: calc(100vh - 5.5rem);
+    overflow-y: auto;
+
+    @media (max-width: 576px) {
+      margin-inline: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

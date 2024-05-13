@@ -1,0 +1,27 @@
+<div class="card" [ngClass]="[appliedClasses]">
+  <img src="{{ imageUrl }}" class="card-img-top" alt="{{ imageAlt }}" *ngIf="imageUrl" />
+  <div class="card-body">
+    <h5 class="card-title" *ngIf="title">{{ title }}</h5>
+    <p class="card-text" *ngIf="description">{{ description }}</p>
+    <a href="#" class="btn btn-primary" *ngIf="buttonText">{{ buttonText }}</a>
+  </div>
+  <a class="card-link" *ngIf="cardLinkText">{{ cardLinkText }}</a>
+  <div class="">
+    @if (actions) {
+      <div class="flex justify-center items-center gap-2 cursor-pointer">
+        @for (action of actions; track action.name) {
+          <span
+            role="button"
+            tabindex="0"
+            class="text-nowrap mb-1 d-inline-block"
+            [title]="action.label"
+            [ngClass]="action.iconClasses"
+            (click)="action.callback(data)"
+          >
+            <i class="pi d-inline-block" [ngClass]="action.icon" style="color: #023e8a"></i>
+          </span>
+        }
+      </div>
+    }
+  </div>
+</div>
