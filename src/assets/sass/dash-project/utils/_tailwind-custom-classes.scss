@@ -1,0 +1,22 @@
+// Puts a secondary color outline on focus. should be used with all focusable elements
+.form-control {
+  @apply w-full block py-2.5 pe-2.5 ps-3 text-sm text-black bg-transparent border border-gray-300 rounded appearance-none focus:outline focus:outline-2 focus:outline-primary -outline-offset-1;
+}
+
+.dash-animate-fade {
+  animation: fade 500ms ease-in-out;
+}
+
+// Disables the element. should be used with all disableable elements
+.dash-disabled {
+  @apply bg-gray-300 cursor-not-allowed text-gray-500 #{!important};
+}
+
+// Style for validation messages
+.border-invalid {
+  @apply border-red-400 text-xs mt-1 text-start;
+}
+
+.text-invalid {
+  @apply text-red-400 text-xs mt-1 text-start block;
+}

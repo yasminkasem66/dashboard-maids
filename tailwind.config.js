@@ -36,4 +36,5 @@ module.exports = {
       },
     },
   },
+  plugins: [require("./src/assets/tailwind-plugins/dash-custom-classes")],
 };

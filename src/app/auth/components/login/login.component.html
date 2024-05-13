@@ -1,46 +1,44 @@
-<div class="login flex justify-center items-center !bg-primary">
-  <div class="login__body">
-    <header class="mb-5">
-      <h1 class="text-dash-primary-800 fw-bolder fs-2 mb-4">Let's get started</h1>
-      <span class="fs-5">Enter your email to login</span>
+<div class="login flex justify-center items-center dash-background-gradient h-[100vh] bg-cover">
+  <div class="text-center bg-gray-100 border border-gray-200 shadow-lg rounded-lg p-12 w-[40rem] min-h-[33rem] m-4">
+    <header class="mb-16">
+      <h1 class="text-primary font-bold text-4xl mb-4">Let's get started</h1>
+      <span class="text-2xl">Enter your email to login</span>
     </header>
-    <form [formGroup]="loginForm" class="w-sm-50 w-90 mx-auto" (ngSubmit)="onLoginFormSubmit()">
-      <div class="d-block mb-3">
+    <form [formGroup]="loginForm" class="w-[75%] mx-auto mb-12" (ngSubmit)="onLoginFormSubmit()">
+      <div class="block mb-6">
         <input
           class="form-control"
-          [ngClass]="{ 'input-invalid': isInputInvalid('email') }"
+          [ngClass]="{ 'border-invalid': isInputInvalid('email') }"
           formControlName="email"
           type="text"
           placeholder="Email"
         />
-        <small class="text-danger text-start d-block" *ngIf="isInputInvalid('email')">Please enter a valid email</small>
+        <small class="text-invalid" *ngIf="isInputInvalid('email')">Please enter a valid email</small>
       </div>
-      <div class="d-block mb-5">
+      <div class="block mb-12">
         <input
           class="form-control"
-          [ngClass]="{ 'input-invalid': isInputInvalid('password') }"
+          [ngClass]="{ 'border-invalid': isInputInvalid('password') }"
           formControlName="password"
           type="password"
           placeholder="password"
         />
-        <small class="text-danger text-start d-block" *ngIf="isInputInvalid('password')"
-          >Please enter a valid password</small
-        >
+        <small class="text-invalid" *ngIf="isInputInvalid('password')">Please enter a valid password</small>
       </div>
       <div class="m-auto">
         <button
           [disabled]="loginForm.invalid"
           type="submit"
-          class="btn btn-dash-primary-800 bg-primary text-white px-5 py-3 text-nowrap"
+          class="btn btn-dash-primary-800 bg-primary text-white px-5 py-3 text-nowrap rounded"
         >
           Get started
         </button>
       </div>
     </form>
-    <hr />
-    <div class="flex justify-center">
+    <hr class="border-t border-gray-900 opacity-10 mb-9" />
+    <div class="flex justify-center items-center">
       <span>Not registered?</span>
-      <a class="fw-bold text-dash-primary-800 text-decoration-none mx-3" [routerLink]="['/signup']">Sign up</a>
+      <a class="text-primary text-decoration-none mx-3 font-medium text-xl" [routerLink]="['/signup']">Sign up</a>
     </div>
   </div>
 </div>

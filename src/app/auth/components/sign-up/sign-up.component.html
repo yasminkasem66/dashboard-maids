@@ -1,28 +1,28 @@
-<div class="login flex justify-center items-center">
+<!-- <div class="login flex justify-center items-center">
   <div class="login__body">
     <header class="mb-5">
       <span class="text-dash-primary-800 fw-bolder fs-3">SIGN UP</span>
     </header>
     <form [formGroup]="signupForm" class="w-sm-50 w-90 mx-auto" (ngSubmit)="onSignupFormSubmit()">
-      <div class="d-block mb-3">
+      <div class="blockmb-3">
         <input
           class="form-control"
-          [ngClass]="{ 'input-invalid': isInputInvalid('email') }"
+          [ngClass]="{ 'border-invalid': isInputInvalid('email') }"
           formControlName="email"
           type="text"
           placeholder="Email"
         />
-        <small class="text-danger text-start d-block" *ngIf="isInputInvalid('email')">Please enter a valid email</small>
+        <small class="text-invalid" *ngIf="isInputInvalid('email')">Please enter a valid email</small>
       </div>
-      <div class="d-block mb-5">
+      <div class="blockmb-5">
         <input
           class="form-control"
-          [ngClass]="{ 'input-invalid': isInputInvalid('password') }"
+          [ngClass]="{ 'border-invalid': isInputInvalid('password') }"
           formControlName="password"
           type="password"
           placeholder="password"
         />
-        <small class="text-danger text-start d-block" *ngIf="isInputInvalid('password')"
+        <small class="text-invalid" *ngIf="isInputInvalid('password')"
           >Please enter a valid password</small
         >
       </div>
@@ -38,7 +38,50 @@
     </form>
     <hr />
     <div class="flex justify-center">
-      <a class="fw-bold text-dash-primary-800 text-decoration-none mx-3" [routerLink]="['/login']">back to login</a>
+      <a class="font-boldtext-dash-primary-800 text-decoration-none mx-3" [routerLink]="['/login']">back to login</a>
+    </div>
+  </div>
+</div> -->
+
+<div class="login flex justify-center items-center dash-background-gradient h-[100vh] bg-cover">
+  <div class="text-center bg-gray-100 border border-gray-200 shadow-lg rounded-lg p-12 w-[40rem] min-h-[33rem] m-4">
+    <header class="mb-16">
+      <h1 class="text-primary font-bold text-4xl mb-4">SIGN UP</h1>
+    </header>
+    <form [formGroup]="signupForm" class="w-[75%] mx-auto mb-12" (ngSubmit)="onSignupFormSubmit()">
+      <div class="block mb-6">
+        <input
+          class="form-control"
+          [ngClass]="{ 'border-invalid': isInputInvalid('email') }"
+          formControlName="email"
+          type="text"
+          placeholder="Email"
+        />
+        <small class="text-invalid" *ngIf="isInputInvalid('email')">Please enter a valid email</small>
+      </div>
+      <div class="block mb-12">
+        <input
+          class="form-control"
+          [ngClass]="{ 'border-invalid': isInputInvalid('password') }"
+          formControlName="password"
+          type="password"
+          placeholder="password"
+        />
+        <small class="text-invalid" *ngIf="isInputInvalid('password')">Please enter a valid password</small>
+      </div>
+      <div class="m-auto">
+        <button
+          [disabled]="signupForm.invalid"
+          type="submit"
+          class="btn btn-dash-primary-800 bg-primary text-white px-5 py-3 text-nowrap rounded"
+        >
+          Sign up
+        </button>
+      </div>
+    </form>
+    <hr class="border-t border-gray-900 opacity-10 mb-9" />
+    <div class="flex justify-center items-center">
+      <a class="text-primary text-decoration-none mx-3 font-medium text-xl" [routerLink]="['/login']">back to login</a>
     </div>
   </div>
 </div>
