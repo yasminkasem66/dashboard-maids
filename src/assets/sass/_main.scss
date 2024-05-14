@@ -1,18 +1,5 @@
 @import './vendors/vendor-primeng-icon.scss';
 
-/*  components file import
-================================ */
-@import './dash-project/compnents/aside-bar';
-
-/* shared components file import
-================================ */
-
-@import './dash-project/compnents/shared/table';
-@import './dash-project/compnents/shared/pagination';
-@import './dash-project/compnents/shared/search';
-@import './dash-project/compnents/shared/widget';
-@import './dash-project/compnents/shared/modal';
-
 /*  pages file import
 ================================ */
 @import './dash-project/pages/app';

@@ -1,54 +1,28 @@
-<!-- <div class="login flex justify-center items-center">
-  <div class="login__body">
-    <header class="mb-5">
-      <span class="text-dash-primary-800 fw-bolder fs-3">SIGN UP</span>
-    </header>
-    <form [formGroup]="signupForm" class="w-sm-50 w-90 mx-auto" (ngSubmit)="onSignupFormSubmit()">
-      <div class="blockmb-3">
-        <input
-          class="form-control"
-          [ngClass]="{ 'border-invalid': isInputInvalid('email') }"
-          formControlName="email"
-          type="text"
-          placeholder="Email"
-        />
-        <small class="text-invalid" *ngIf="isInputInvalid('email')">Please enter a valid email</small>
-      </div>
-      <div class="blockmb-5">
-        <input
-          class="form-control"
-          [ngClass]="{ 'border-invalid': isInputInvalid('password') }"
-          formControlName="password"
-          type="password"
-          placeholder="password"
-        />
-        <small class="text-invalid" *ngIf="isInputInvalid('password')"
-          >Please enter a valid password</small
-        >
-      </div>
-      <div class="m-auto">
-        <button
-          [disabled]="signupForm.invalid"
-          type="submit"
-          class="btn btn-dash-primary-800 bg-primary text-white px-5 py-3"
-        >
-          Sign up
-        </button>
-      </div>
-    </form>
-    <hr />
-    <div class="flex justify-center">
-      <a class="font-boldtext-dash-primary-800 text-decoration-none mx-3" [routerLink]="['/login']">back to login</a>
-    </div>
-  </div>
-</div> -->
-
 <div class="login flex justify-center items-center dash-background-gradient h-[100vh] bg-cover">
   <div class="text-center bg-gray-100 border border-gray-200 shadow-lg rounded-lg p-12 w-[40rem] min-h-[33rem] m-4">
     <header class="mb-16">
       <h1 class="text-primary font-bold text-4xl mb-4">SIGN UP</h1>
     </header>
     <form [formGroup]="signupForm" class="w-[75%] mx-auto mb-12" (ngSubmit)="onSignupFormSubmit()">
+      <div class="block mb-6">
+        <input
+          class="form-control"
+          [ngClass]="{ 'border-invalid': isInputInvalid('firstName') }"
+          formControlName="firstName"
+          type="text"
+          placeholder="First Name"
+        />
+        <small class="text-invalid" *ngIf="isInputInvalid('firstName')">Please enter your firstName</small>
+      </div>
+      <div class="block mb-6">
+        <input
+          class="form-control"
+          [ngClass]="{ 'border-invalid': isInputInvalid('lastName') }"
+          formControlName="lastName"
+          type="text"
+          placeholder="Last Name"
+        />
+      </div>
       <div class="block mb-6">
         <input
           class="form-control"
@@ -67,7 +41,17 @@
           type="password"
           placeholder="password"
         />
-        <small class="text-invalid" *ngIf="isInputInvalid('password')">Please enter a valid password</small>
+        <small class="text-invalid" *ngIf="isInputInvalid('password')">
+          @if (signupForm.get('password')?.['errors']?.['required']) {
+            <span> Please enter a valid password</span>
+          }
+          @if (signupForm.get('password')?.['errors']?.['minlength']) {
+            <span>
+              Required length is
+              {{ signupForm.get('password')?.['errors']?.['minlength']?.['requiredLength'] }} characters</span
+            >
+          }
+        </small>
       </div>
       <div class="m-auto">
         <button

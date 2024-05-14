@@ -1,17 +1,17 @@
-<div class="menu h-sm-100 h-auto">
-  <ul class="flex flex-sm-column flex-row h-sm-100 h-auto list-unstyled p-0">
-    <div class="flex-grow-1 w-xl-auto w-100 text-xl-start text-center flex flex-sm-column flex-row">
+<div class="menu px-4 py-8 sm:h-100 h-auto text-base text-white">
+  <ul class="flex sm:flex-col flex-row sm:h-100 h-auto list-none p-0">
+    <div class="flex-grow xl:w-auto w-100 xl:text-start text-center flex sm:flex-col flex-row gap-2">
       <li
         *ngFor="let navItem of navList; let i = index"
         [ngClass]="{ 'menu-active': selectedIndex === i }"
         (click)="setActiveLink(i)"
-        class="menu__main__link mb-sm-4 mb-0 w-100"
+        class="cursor-pointer py-2 px-2 sm:px-4 text-white no-underline sm:mb-4 mb-0 w-100"
         routerLinkActive="menu-active"
         [routerLink]="navItem.route"
         [title]="navItem.title"
       >
-        <i class="pi d-inline-block text-white" [ngClass]="navItem.icon"></i>
-        <span class="d-xl-inline-block ms-xl-2 ms-0 d-none">{{ navItem.title }}</span>
+        <i class="pi inline-block text-white" [ngClass]="navItem.icon"></i>
+        <span class="xl:inline-block xl:ms-2 ms-0 hidden">{{ navItem.title }}</span>
 
         <ul
           *ngIf="navItem.navigationItems"
@@ -34,7 +34,7 @@
     <li
       routerLinkActive="menu-active"
       (click)="openLogout()"
-      class="menu__main__link mb-sm-4 mb-0 w-xl-auto w-100 text-xl-start text-center disabled"
+      class="cursor-pointer py-2 px-2 sm:px-4 text-white no-underline flex flex-row items-center justify-center xl:justify-start gap-2"
       [title]="'log out'"
     >
       <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +43,7 @@
           fill="white"
         />
       </svg>
-      <span class="d-xl-inline-block ms-xl-3 ms-0 d-none">LOG OUT</span>
+      <span class="xl:inline-block ms:xl-3 ms-0 hidden">LOG OUT</span>
     </li>
   </ul>
 </div>
@@ -58,9 +58,9 @@
   (modalSubmitted)="logout()"
   [wrapperClasses]="'w-25'"
   [delete]="true"
-  [closeBtnStyle]="'px-3 py-2'"
+  [closeBtnStyle]="'px-3 py-2 bg-danger'"
 >
   <div>
-    <h3 class="text-danger fw-bold">Do you want to log out?</h3>
+    <h3 class="text-danger font-bold">Do you want to log out?</h3>
   </div>
 </dash-modal>

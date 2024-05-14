@@ -25,26 +25,10 @@ export class AsideBarComponent {
 
   navList: MenuItem[] = [
     {
-      title: 'DASHBOARD',
-      route: 'dashboard',
+      title: 'Employee',
+      route: 'employee',
       icon: 'pi-microsoft',
       navigationItems: [],
-    },
-    {
-      title: 'POSTS',
-      route: '/posts',
-      icon: 'pi-book',
-      navigationItems: [],
-    },
-    {
-      title: 'PHOTOS',
-      route: 'photos',
-      icon: 'pi-images',
-    },
-    {
-      title: 'ALBUMS',
-      route: 'albums',
-      icon: 'pi-file-o',
     },
   ];
 
@@ -61,7 +45,7 @@ export class AsideBarComponent {
   }
 
   logout() {
-    this.localStorage.removeItem('user');
+    this.localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 }

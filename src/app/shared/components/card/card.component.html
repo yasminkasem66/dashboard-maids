@@ -1,7 +1,7 @@
-<div class="card" [ngClass]="[appliedClasses]">
+<div class="card bg-light shadow-lg w-[35rem] p-6" [ngClass]="[appliedClasses]">
   <img src="{{ imageUrl }}" class="card-img-top" alt="{{ imageAlt }}" *ngIf="imageUrl" />
   <div class="card-body">
-    <h5 class="card-title" *ngIf="title">{{ title }}</h5>
+    <h5 class="text-primary font-bold text-xl mb-4" *ngIf="title">{{ title }}</h5>
     <p class="card-text" *ngIf="description">{{ description }}</p>
     <a href="#" class="btn btn-primary" *ngIf="buttonText">{{ buttonText }}</a>
   </div>
@@ -13,12 +13,12 @@
           <span
             role="button"
             tabindex="0"
-            class="text-nowrap mb-1 d-inline-block"
+            class="text-nowrap mb-1 inline-block"
             [title]="action.label"
             [ngClass]="action.iconClasses"
             (click)="action.callback(data)"
           >
-            <i class="pi d-inline-block" [ngClass]="action.icon" style="color: #023e8a"></i>
+            <i class="pi inline-block" [ngClass]="action.icon" style="color: #023e8a"></i>
           </span>
         }
       </div>

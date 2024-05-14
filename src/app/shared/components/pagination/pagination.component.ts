@@ -24,7 +24,7 @@ export class PaginationComponent implements OnChanges {
   @Input({ required: true, transform: numberAttribute }) totalPages: number = 0;
   @Input({ required: true, transform: numberAttribute }) totalCount: number = 0;
   @Output() pageNumberChange: EventEmitter<number> = new EventEmitter<number>();
-  currentPage: number = 1;
+  @Input() currentPage: number = 1;
   pages: number[] = [];
   pagesNumber!: number;
   maxPages = 5;

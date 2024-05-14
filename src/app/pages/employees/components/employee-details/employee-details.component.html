@@ -1,0 +1,7 @@
+@if (employee$ | async; as employee) {
+  <dash-card [title]="employee.data.name" [description]="employee.data.salary"></dash-card>
+} @else {
+  <dash-no-data-found></dash-no-data-found>
+}
+
+<dash-back-button [buttonTitle]="'Back'" [buttonClasses]="'mt-5'"></dash-back-button>

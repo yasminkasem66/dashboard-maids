@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   @Input() isDisabled: boolean = false;
   @Input() appliedClasses: string = '';
   @Input() placeholder = '';
-  @Input({ transform: booleanAttribute }) debounceTime: number = 3000;
+  @Input({ transform: booleanAttribute }) debounceTime: number = 800;
   @Output() searchValueChange = new EventEmitter<string>();
   private debouncer: Subject<string> = new Subject<string>();
 

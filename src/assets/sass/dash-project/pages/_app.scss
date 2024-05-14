@@ -27,12 +27,12 @@
     grid-template-rows: calc(100vh - 5.5rem);
     overflow-y: auto;
 
-    @media (max-width: 576px) {
+    @media (max-width: 640px) {
       margin-inline: 1rem;
     }
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: 640px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
