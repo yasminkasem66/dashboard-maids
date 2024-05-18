@@ -7,10 +7,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   standalone: true,
   imports: [NgOptimizedImage],
   template: `
-    <div
-      class="position-fixed start-0 top-0 overlay z-10 flex justify-center items-center w-100 h-[100vh] bg-primary-light"
-      [@fade]
-    >
+    <div class="global_loader" [@fade]>
       <img alt="Loading..." height="150" ngSrc="assets/images/global-loading-spinner.svg" priority="true" width="150" />
     </div>
   `,
