@@ -1,0 +1,57 @@
+<div class="mx-auto w-[90%] mb-10">
+  <h1 class="text-primary font-bold text-2xl mb-4">Employees</h1>
+  <dash-search
+    [inputClasses]="'mb-2'"
+    (searchValueChange)="filteredItems($event)"
+    [searchValue]="searchTerm"
+  ></dash-search>
+  <select
+    #sortSelect
+    class="form-control mb-3 mt-2"
+    aria-label="Default select example"
+    (change)="sortedItems(sortSelect.value)"
+  >
+    <option selected disabled>Open this select menu</option>
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+  </select>
+
+  <div class="flex justify-end mb-4">
+    <button class="btn text-white bg-primary flex items-center py-2 px-12 rounded" (click)="openAddModal = true">
+      <span>Add Employees</span>
+    </button>
+  </div>
+</div>
+
+@if (employees && employees.length > 0) {
+  <dash-table
+    [totalCount]="employees.length"
+    [tableData]="paginatedData"
+    (pageNumberChange)="pageNumberChange($event)"
+    [headers]="headers"
+    [pageSize]="5"
+    [showPagination]="employees.length > 5"
+    [actions]="actions"
+    [pageNumber]="pageNumber"
+  ></dash-table>
+} @else {
+  <dash-no-data-found></dash-no-data-found>
+}
+
+@if (openEditModal) {
+  <dash-add-edit-employee
+    [openModal]="openEditModal"
+    [actionTypeValue]="actionType.edit"
+    (actionClicked)="editEMployee($event); openEditModal = false"
+    (modalClosed)="openEditModal = false"
+    [employee]="employee"
+  ></dash-add-edit-employee>
+}
+
+@if (openAddModal) {
+  <dash-add-edit-employee
+    [openModal]="openAddModal"
+    (actionClicked)="addEmployee($event); openAddModal = false"
+    (modalClosed)="openAddModal = false"
+  ></dash-add-edit-employee>
+}

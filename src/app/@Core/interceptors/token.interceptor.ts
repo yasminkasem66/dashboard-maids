@@ -2,15 +2,15 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { throwError } from 'rxjs';
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
-  const token = localStorage.getItem('user');
+  const user = localStorage.getItem('user');
 
-  if (!token && !isValidRequestForInterceptor()) {
+  if (!user && !isValidRequestForInterceptor()) {
     return throwError(() => 'No Token provided');
   }
 
   const clonedReq = req.clone({
     setHeaders: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${user}`,
     },
   });
 

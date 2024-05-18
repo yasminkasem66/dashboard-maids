@@ -7,6 +7,25 @@
       <div class="block mb-6">
         <input
           class="form-control"
+          [ngClass]="{ 'border-invalid': isInputInvalid('firstName') }"
+          formControlName="firstName"
+          type="text"
+          placeholder="First Name"
+        />
+        <small class="text-invalid" *ngIf="isInputInvalid('firstName')">Please enter your firstName</small>
+      </div>
+      <div class="block mb-6">
+        <input
+          class="form-control"
+          [ngClass]="{ 'border-invalid': isInputInvalid('lastName') }"
+          formControlName="lastName"
+          type="text"
+          placeholder="Last Name"
+        />
+      </div>
+      <div class="block mb-6">
+        <input
+          class="form-control"
           [ngClass]="{ 'border-invalid': isInputInvalid('email') }"
           formControlName="email"
           type="text"
@@ -22,7 +41,17 @@
           type="password"
           placeholder="password"
         />
-        <small class="text-invalid" *ngIf="isInputInvalid('password')">Please enter a valid password</small>
+        <small class="text-invalid" *ngIf="isInputInvalid('password')">
+          @if (signupForm.get('password')?.['errors']?.['required']) {
+            <span> Please enter a valid password</span>
+          }
+          @if (signupForm.get('password')?.['errors']?.['minlength']) {
+            <span>
+              Required length is
+              {{ signupForm.get('password')?.['errors']?.['minlength']?.['requiredLength'] }} characters</span
+            >
+          }
+        </small>
       </div>
       <div class="m-auto">
         <button

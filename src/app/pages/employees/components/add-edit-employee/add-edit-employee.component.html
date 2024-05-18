@@ -1,0 +1,35 @@
+<dash-modal
+  [title]="actionTypeValue == actionType.add ? 'Add Employee' : 'Edit Employee'"
+  *ngIf="openModal"
+  (modalClosed)="openModal = false; modalClosed.emit(true)"
+  [closeBtnTitle]="'Close'"
+  [submitBtnTitle]="actionName"
+  (modalSubmitted)="modalSubmitted()"
+  [wrapperClasses]="'w-25'"
+  [closeBtnStyle]="'px-3 py-2'"
+>
+  <div>
+    <form [formGroup]="employeeForm" class="row">
+      <div class="mb-3">
+        <label for="name" class="form-label">name</label>
+        <input type="name" class="form-control" formControlName="name" id="name" placeholder="name" />
+      </div>
+
+      <div class="mb-3">
+        <label for="salary" class="form-label">salary</label>
+        <input type="salary" class="form-control" formControlName="salary" id="salary" placeholder="salary" />
+      </div>
+
+      <div class="mb-3">
+        <label for="deductions" class="form-label">Deductions</label>
+        <textarea
+          class="form-control"
+          formControlName="deductions"
+          id="deductions"
+          rows="3"
+          placeholder="deductions"
+        ></textarea>
+      </div>
+    </form>
+  </div>
+</dash-modal>

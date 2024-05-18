@@ -45,7 +45,7 @@ export class AsideBarComponent {
   }
 
   logout() {
-    this.localStorage.removeItem('user');
+    this.localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 }
