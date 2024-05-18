@@ -1,0 +1,15 @@
+@if (user$ | async; as user) {
+  <div class="flex justify-center items-center">
+    <dash-card
+      [imageUrl]="user.data.avatar"
+      [title]="user.data.first_name"
+      [description]="user.data.last_name"
+    ></dash-card>
+  </div>
+} @else {
+  <dash-no-data-found></dash-no-data-found>
+}
+
+<div class="flex justify-center items-center">
+  <dash-back-button [buttonTitle]="'Back'" [buttonClasses]="'mt-8 w-100 !justify-center'"></dash-back-button>
+</div>

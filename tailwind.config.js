@@ -18,21 +18,11 @@ module.exports = {
           light: "#ade8f4",//200
           lighter: "#FFE5D6",
         },
-        gray: {
-          150: "#ADB5BD",
-          175: "#E9EBED",
-        },
-        blue: {
-          750: "#1E3A8A",
-        },
+    
         accent: "#8B8F92",
         success: "#22C55E",
         danger: "#EF4444",
         light: "#f8f9fa",
-        status: {
-          active: "#00A711",
-          pending: "#F59E0B",
-        },
       },
     },
   },

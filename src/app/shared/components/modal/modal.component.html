@@ -1,38 +1,38 @@
-<div class="modal flex justify-center items-center">
-  <div class="wrapper bg-light" [ngClass]="wrapperClasses">
-    <div class="wrapper__title p-4 flex justify-content-between items-center">
-      <h2 class="fw-bold">{{ title }}</h2>
+<div class="modal fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
+  <div class="rounded-md shadow-lg border border-gray-200 min-w-[20rem] w-[50rem] bg-light" [ngClass]="wrapperClasses">
+    <div class="p-4 flex justify-between items-center">
+      <h2 class="font-bold">{{ title }}</h2>
       <img
         (click)="hideModal()"
-        class="wrapper__close-icon cursor-pointer"
+        class="opacity-30 cursor-pointer"
         ngSrc="assets/images/icons/times.svg"
         height="24"
         width="24"
         alt=""
       />
     </div>
-    <hr />
-    <div class="w-100 wrapper__content">
+    <hr class="border border-black border-opacity-40" />
+    <div class="w-100 p-6 overflow-y-auto overflow-x-hidden">
       <ng-content></ng-content>
     </div>
     <!-- buttons -->
-    <div class="flex wrapper__buttons">
+    <div class="flex m-6">
       <div class="ms-auto flex">
         <button
           type="button"
           (click)="hideModal()"
-          class="btn border me-4"
+          class="rounded px-6 py-4 text-primary bg-light border me-4"
           *ngIf="closeBtnTitle"
-          [ngClass]="[isBtnLarge ? 'wrapper__buttons__lg' : '', closeBtnStyle]"
+          [ngClass]="[isBtnLarge ? 'w-[52rem]' : '', closeBtnStyle]"
         >
           {{ closeBtnTitle }}
         </button>
         <button
           type="submit"
           (click)="submit()"
-          class="btn btn-primary"
+          class="rounded px-6 py-4 text-white bg-primary"
           *ngIf="submitBtnTitle"
-          [ngClass]="{ wrapper__buttons__lg: isBtnLarge, 'btn-danger': delete }"
+          [ngClass]="{ wrapper__buttons__lg: isBtnLarge, 'bg-danger': delete }"
         >
           {{ submitBtnTitle }}
         </button>

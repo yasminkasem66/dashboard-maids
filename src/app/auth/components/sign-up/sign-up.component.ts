@@ -27,18 +27,21 @@ export class SignUpComponent {
 
   createForm() {
     this.signupForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      email: ['eve.holt@reqres.in', [Validators.required, Validators.email]],
+      password: ['pistol', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   onSignupFormSubmit(): void {
     if (this.signupForm.invalid) return;
     const formValue = this.signupForm.value;
-    this.authService.updateUser(formValue);
-    localStorage.setItem('user', formValue);
-    this.getNameInitials(this.signupForm.value.email);
-    this.route.navigate(['']);
+    this.authService.signup(formValue).subscribe({
+      next: () => {
+        localStorage.setItem('token', this.signupForm.value);
+        this.getNameInitials(this.signupForm.value.email);
+        this.route.navigate(['/users']);
+      },
+    });
   }
 
   getNameInitials(user: string) {

@@ -1,26 +1,37 @@
-<div class="table-wrapper" [ngClass]="customClass" *ngIf="tableData">
-  <table>
-    <thead>
+<div class="overflow-auto" [ngClass]="customClass" *ngIf="tableData">
+  <table class="border-collapse rounded-lg border-2 border-solid border-primary border-t-0 overflow-auto w-90 mx-auto">
+    <thead class="text-primary bg-light">
       <tr>
-        <th *ngFor="let header of headers">{{ header.name }}</th>
-        <th>Actions</th>
+        <th class="border-2 border-solid border-primary p-4 text-center" *ngFor="let header of headers">
+          {{ header.name }}
+        </th>
+        <th class="border-2 border-solid border-primary p-4 text-center">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of tableData">
-        <td *ngFor="let header of headers; let i = index" [ngClass]="header.classesStyle">
-          <span *ngIf="header.value"> {{ getRowValueFromHeader(header, item) }}</span>
+        <td
+          class="border-2 border-solid border-primary p-4 text-center text-priborder-primary first:border-r-0"
+          *ngFor="let header of headers; let i = index"
+          [ngClass]="header.classesStyle"
+        >
+          <span *ngIf="header.value" class="text-primary"> {{ getRowValueFromHeader(header, item) }}</span>
         </td>
-        <td *ngIf="actions">
-          <div
-            *ngFor="let action of actions"
-            class="iconStyle flex justify-center items-center gap-2 cursor-pointer"
-            [ngClass]="action.iconClasses"
-            (click)="action.callback(item)"
-          >
-            <span role="button" tabindex="0" class="text-nowrap mb-1 d-inline-block" [title]="action.label">
-              <i class="pi d-inline-block" [ngClass]="action.icon" style="color: #023e8a"></i>
-            </span>
+        <td
+          class="border-2 border-solid border-primary p-4 text-center text-priborder-primary first:border-r-0"
+          *ngIf="actions"
+        >
+          <div class="flex justify-center items-center flex-row gap-3 cursor-pointer">
+            <div
+              *ngFor="let action of actions"
+              class="iconStyle"
+              [ngClass]="action.iconClasses"
+              (click)="action.callback(item)"
+            >
+              <span role="button" tabindex="0" class="text-nowrap mb-1 d-inline-block" [title]="action.label">
+                <i class="pi d-inline-block" [ngClass]="action.icon" style="color: #023e8a"></i>
+              </span>
+            </div>
           </div>
         </td>
       </tr>
@@ -35,5 +46,6 @@
     [pageSize]="pageSize"
     [totalCount]="totalCount"
     [totalPages]="Math.ceil(totalCount / pageSize)"
+    [currentPage]="pageNumber"
   ></dash-pagination>
 </div>

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { AuthService } from '../../services/auth-service.service';
+import { ILoginResponse } from '../../models/ilogin-response';
 
 @Component({
   selector: 'dash-login',
@@ -26,21 +27,21 @@ export class LoginComponent {
 
   createForm() {
     this.loginForm = this.fb.group({
-      email: ['test@gmail.com', [Validators.required, Validators.email]],
-      password: ['test', [Validators.required]],
+      email: ['eve.holt@reqres.in', [Validators.required, Validators.email]],
+      password: ['cityslicka', [Validators.required]],
     });
   }
 
   onLoginFormSubmit(): void {
     if (this.loginForm.invalid) return;
     const formValue = this.loginForm.value;
-    const exists = this.authService.getUsers.some(
-      (item) => item.email === formValue.email && item.password == formValue.password,
-    );
-    if (!exists) return;
-    this.localStorage.setItem('user', this.loginForm.value);
-    this.getNameInitials(this.loginForm.value.email);
-    this.route.navigate(['']);
+    this.authService.login(formValue).subscribe({
+      next: (user: ILoginResponse) => {
+        this.localStorage.setItem('token', user.token);
+        this.getNameInitials(this.loginForm.value.email);
+        this.route.navigate(['/users']);
+      },
+    });
   }
 
   getNameInitials(user: string) {

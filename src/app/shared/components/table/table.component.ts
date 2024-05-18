@@ -20,6 +20,7 @@ export class TableComponent {
   @Input() actions?: IActionTable[];
   @Input() totalCount!: number;
   @Input() pageSize: number = 5;
+  @Input() pageNumber: number = 1;
 
   @Output() pageNumberChange: EventEmitter<number> = new EventEmitter<number>();
   protected readonly Math = Math;

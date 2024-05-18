@@ -1,21 +1,16 @@
-export const API_URL = 'https://jsonplaceholder.typicode.com/';
+export const API_URL = 'https://reqres.in/api/';
 
 export const ServicesUrls = {
+  // auth
+  // http://localhost:8080/auth/
+
+  LOGIN: 'login',
+  SIGN_UP: 'register',
   // post
-  PAGINATED_LIST_OF_POSTS: 'posts?_page={pageNumber}&_per_page={pageSize}',
-  LIST_OF_POSTS: 'posts',
-  POSTS_BY_USER_ID: 'posts?userId={userId}',
-  DELETE_POST: 'posts/',
-
-  //album
-  LIST_OF_ALBUMS: 'albums',
-  ALBUMS_BY_USER_ID: 'albums?userId={userId}',
-  DELETE_ALBUM: 'albums/',
-
-  //photos
-  LIST_OF_PHOTOS: 'photos',
-  PHOTOS_BY_ALBUM_ID: 'photos?albumId={userId}',
-  DELETE_PHOTO: 'photos/',
-
-  GET_CURRENT_USER: 'users/',
+  LIST_OF_USERS: 'users',
+  LIST_OF_PAGINATED_USERS: 'users?page={page}',
+  USER_BY_ID: 'users/',
+  DELETE_USER: 'users/',
+  EDIT_USER: 'users/',
+  CREATE_USER: 'users/create',
 };

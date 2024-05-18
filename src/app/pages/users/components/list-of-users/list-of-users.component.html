@@ -1,0 +1,89 @@
+<div class="mx-auto w-[90%] mb-10">
+  <h1 class="text-primary font-bold text-2xl mb-4">Users</h1>
+
+  <dash-search
+    [inputClasses]="'mb-2'"
+    (searchValueChange)="filteredItems($event)"
+    [searchValue]="searchTerm"
+  ></dash-search>
+
+  <select
+    #sortSelect
+    class="form-control mb-3 mt-2"
+    aria-label="Default select example"
+    (change)="sortedItems(sortSelect.value)"
+  >
+    <option selected disabled>Open this select menu</option>
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+  </select>
+
+  <div class="flex justify-end mb-4">
+    <button class="btn text-white bg-primary flex items-center py-2 px-12 rounded" (click)="openAddModal = true">
+      <span>Add Users</span>
+    </button>
+  </div>
+</div>
+
+@if (users.length > 0) {
+  <div class="grid grid-cols-1 items-center sm:grid-cols-2 md:grid-cols-3 gap-4 w-90 mx-auto mb-4">
+    @for (user of users; track user.id) {
+      <dash-card
+        appliedClasses=" gap-2"
+        [title]="user.first_name"
+        [imageUrl]="user.avatar"
+        [imageAlt]="user.first_name"
+        [actions]="actions"
+        [data]="user"
+      ></dash-card>
+    } @empty {
+      <dash-no-data-found></dash-no-data-found>
+    }
+  </div>
+}
+
+<!-- pagination -->
+@if (users.length > 0) {
+  <div class="my-4 pt-2">
+    <dash-pagination
+      (pageNumberChange)="pageNumberChange($event)"
+      [pageSize]="pageSize"
+      [totalCount]="data.total"
+      [totalPages]="data.total_pages"
+    ></dash-pagination>
+  </div>
+}
+
+@if (openEditModal) {
+  <dash-add-edit-user
+    [openModal]="openEditModal"
+    [actionTypeValue]="actionType.edit"
+    (actionClicked)="editUser($event); openEditModal = false"
+    (modalClosed)="openEditModal = false"
+    [user]="user"
+  ></dash-add-edit-user>
+}
+
+@if (openAddModal) {
+  <dash-add-edit-user
+    [openModal]="openAddModal"
+    (actionClicked)="addUser($event); openAddModal = false"
+    (modalClosed)="openAddModal = false"
+  ></dash-add-edit-user>
+}
+
+<dash-modal
+  [title]="'Confirm Delete'"
+  *ngIf="openConfirmDelete"
+  (modalClosed)="openConfirmDelete = false"
+  [closeBtnTitle]="'Close'"
+  [submitBtnTitle]="'Confirm'"
+  (modalSubmitted)="deleteUser()"
+  [wrapperClasses]="'w-25'"
+  [delete]="true"
+  [closeBtnStyle]="'px-3 py-2 bg-danger'"
+>
+  <div>
+    <h3 class="text-danger font-bold">Do you want to Delete {{ user.first_name }}?</h3>
+  </div>
+</dash-modal>

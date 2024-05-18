@@ -8,19 +8,13 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   imports: [NgOptimizedImage],
   template: `
     <div
-      class="position-fixed start-0 top-0 overlay z-10 flex justify-center items-center w-100 h-100 bg-light"
+      class="position-fixed start-0 top-0 overlay z-10 flex justify-center items-center w-100 h-[100vh] bg-primary-light"
       [@fade]
     >
       <img alt="Loading..." height="150" ngSrc="assets/images/global-loading-spinner.svg" priority="true" width="150" />
     </div>
   `,
-  styles: [
-    `
-      .overlay {
-        background-color: rgba(255, 240, 243, 0.975);
-      }
-    `,
-  ],
+  styles: [],
   animations: [trigger('fade', [state('void', style({ opacity: 0 })), transition('* <=> void', [animate('200ms')])])],
 })
 export class GlobalLoaderComponent {}

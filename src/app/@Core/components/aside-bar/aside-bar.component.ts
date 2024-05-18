@@ -25,26 +25,10 @@ export class AsideBarComponent {
 
   navList: MenuItem[] = [
     {
-      title: 'DASHBOARD',
-      route: 'dashboard',
+      title: 'Users',
+      route: 'users',
       icon: 'pi-microsoft',
       navigationItems: [],
-    },
-    {
-      title: 'POSTS',
-      route: '/posts',
-      icon: 'pi-book',
-      navigationItems: [],
-    },
-    {
-      title: 'PHOTOS',
-      route: 'photos',
-      icon: 'pi-images',
-    },
-    {
-      title: 'ALBUMS',
-      route: 'albums',
-      icon: 'pi-file-o',
     },
   ];
 

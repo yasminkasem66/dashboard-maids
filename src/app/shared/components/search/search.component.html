@@ -1,7 +1,7 @@
 <div
   (focus)="inputUi.focus()"
   [ngClass]="[isDisabled ? 'disabled' : '', appliedClasses]"
-  class="flex gap-2 justify-items-center bg-white rounded position-relative bg-danger search"
+  class="flex gap-2 justify-items-center bg-white rounded position-relative search"
   tabindex="-1"
 >
   <input
@@ -11,7 +11,7 @@
     [disabled]="isDisabled"
     [ngClass]="[isDisabled ? 'disabled' : '', inputClasses]"
     [placeholder]="placeholder || 'Search'"
-    class="outline-none w-full form-control"
+    class="outline-none w-full form-control indent-7 bg-[url('/assets/images/search.svg')] bg-no-repeat bg-[center_left_1rem]"
     type="search"
   />
 </div>

@@ -1,0 +1,23 @@
+<dash-modal
+  [title]="actionTypeValue == actionType.add ? 'Add User' : 'Edit User'"
+  *ngIf="openModal"
+  (modalClosed)="openModal = false; modalClosed.emit(true)"
+  [closeBtnTitle]="'Close'"
+  [submitBtnTitle]="actionName"
+  (modalSubmitted)="modalSubmitted()"
+  [wrapperClasses]="'w-25'"
+  [closeBtnStyle]="'px-3 py-2'"
+>
+  <div>
+    <form [formGroup]="userForm" class="row">
+      <div class="mb-3">
+        <label for="first_name" class="form-label">First Name</label>
+        <input type="text" class="form-control" formControlName="first_name" id="first_name" placeholder="First Name" />
+      </div>
+      <div class="mb-3">
+        <label for="last_name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" formControlName="last_name" id="last_name" placeholder="Last Name" />
+      </div>
+    </form>
+  </div>
+</dash-modal>
