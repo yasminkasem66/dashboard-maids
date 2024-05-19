@@ -7,25 +7,6 @@
       <div class="block mb-6">
         <input
           class="form-control"
-          [ngClass]="{ 'border-invalid': isInputInvalid('firstName') }"
-          formControlName="firstName"
-          type="text"
-          placeholder="First Name"
-        />
-        <small class="text-invalid" *ngIf="isInputInvalid('firstName')">Please enter your firstName</small>
-      </div>
-      <div class="block mb-6">
-        <input
-          class="form-control"
-          [ngClass]="{ 'border-invalid': isInputInvalid('lastName') }"
-          formControlName="lastName"
-          type="text"
-          placeholder="Last Name"
-        />
-      </div>
-      <div class="block mb-6">
-        <input
-          class="form-control"
           [ngClass]="{ 'border-invalid': isInputInvalid('email') }"
           formControlName="email"
           type="text"
