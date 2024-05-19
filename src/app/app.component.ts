@@ -1,5 +1,5 @@
-import { Component, Injector, OnInit, effect, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, Injector, inject } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { GlobalLoaderService } from './shared/ui-services/global-loader.service';
 import { GlobalLoaderComponent } from './shared/components/global-loader/global-loader.component';
 import { NgIf } from '@angular/common';
@@ -11,18 +11,20 @@ import { NgIf } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   loaderService = inject(GlobalLoaderService);
   injector = inject(Injector);
+  router = inject(Router);
 
   isLoading: boolean = true;
 
-  ngOnInit(): void {
-    effect(
-      () => {
-        this.isLoading = this.loaderService.loaderSignal();
-      },
-      { injector: this.injector },
-    );
+  constructor() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.loaderService.showLoader();
+      } else if (event instanceof NavigationEnd) {
+        this.loaderService.hideLoader();
+      }
+    });
   }
 }

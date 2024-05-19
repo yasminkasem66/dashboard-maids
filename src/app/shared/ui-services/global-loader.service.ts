@@ -4,7 +4,7 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
   providedIn: 'root',
 })
 export class GlobalLoaderService {
-  loaderSignal: WritableSignal<boolean> = signal(true);
+  loaderSignal: WritableSignal<boolean> = signal(false);
 
   showLoader(): void {
     this.loaderSignal.set(true);
